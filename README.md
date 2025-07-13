@@ -10,11 +10,21 @@ A complete Retrieval-Augmented Generation (RAG) system using Claude API directly
 - **Claude Integration**: Direct integration with Anthropic's Claude API for response generation
 - **Modular Design**: Clean, extensible architecture for easy customization
 
-## Setup
+## Quick Start
 
-### 1. Install Dependencies
+**⚠️ Having installation issues with Python 3.13? See [INSTALL.md](INSTALL.md) for detailed troubleshooting.**
 
+### Automatic Installation (Recommended)
 ```bash
+python install.py
+```
+
+### Manual Installation
+```bash
+# 1. Update build tools first
+pip install --upgrade pip setuptools wheel
+
+# 2. Install dependencies  
 pip install -r requirements.txt
 ```
 
