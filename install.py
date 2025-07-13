@@ -50,11 +50,13 @@ def install_with_fallback():
     print("\n📦 Strategy 2: Installing packages individually...")
     packages = [
         ("anthropic", "Anthropic API client"),
-        ("openai", "OpenAI API client"), 
+        ("sentence-transformers", "Local embedding models"),
+        ("torch", "PyTorch for embeddings"),
         ("numpy", "NumPy for numerical operations"),
         ("python-dotenv", "Environment variable management"),
         ("scikit-learn", "Machine learning utilities"),
-        ("tiktoken", "Token counting")
+        ("tiktoken", "Token counting"),
+        ("pinecone-client", "Pinecone vector database integration")
     ]
     
     all_success = True
@@ -75,7 +77,7 @@ def install_with_fallback():
     print("\n📦 Strategy 3: Minimal installation (core packages only)...")
     critical_packages = [
         "anthropic",
-        "openai", 
+        "sentence-transformers", 
         "numpy",
         "python-dotenv"
     ]
@@ -265,9 +267,10 @@ def main():
     
     print("\n🎉 Installation completed!")
     print("\nNext steps:")
-    print("1. Edit .env with your API keys")
-    print("2. Run: python setup_and_test.py")
-    print("3. Try: python example_usage.py")
+    print("1. Edit .env with your Anthropic API key")
+    print("2. Try: python3 example_local_rag.py (local embeddings, no OpenAI needed)")
+    print("3. Or: python3 example_usage.py (if you have OpenAI API key)")
+    print("4. Run: python3 setup_and_test.py (to test full system)")
 
 if __name__ == "__main__":
     main() 

@@ -30,38 +30,46 @@ pip install -r requirements.txt
 
 ### 2. Configure API Keys
 
-Copy the example environment file and add your API keys:
+Copy the example environment file and add your API key:
 
 ```bash
 cp env_example.txt .env
 ```
 
-Edit `.env` with your actual API keys:
+Edit `.env` with your Anthropic API key:
 
 ```
 ANTHROPIC_API_KEY=your_anthropic_api_key_here
-OPENAI_API_KEY=your_openai_api_key_here
 ```
 
-**Getting API Keys:**
+**Getting API Key:**
 - **Anthropic API Key**: Sign up at [console.anthropic.com](https://console.anthropic.com)
-- **OpenAI API Key**: Sign up at [platform.openai.com](https://platform.openai.com)
+
+**Note:** This version uses local embeddings (sentence-transformers), so you only need the Anthropic API key!
 
 ### 3. Run the Example
 
+**Local embeddings version (recommended):**
 ```bash
-python example_usage.py
+python3 example_local_rag.py
+```
+
+**Or the original version (requires OpenAI API key):**
+```bash
+python3 example_usage.py
 ```
 
 ## Usage
 
 ### Basic Usage
 
-```python
-from claude_rag import ClaudeRAG
+**Using local embeddings (no OpenAI API key needed):**
 
-# Initialize the RAG system
-rag = ClaudeRAG()
+```python
+from claude_rag_no_openai import ClaudeRAGLocal
+
+# Initialize the RAG system (only needs Anthropic API key)
+rag = ClaudeRAGLocal()
 
 # Add documents
 documents = [
@@ -78,6 +86,16 @@ rag.add_documents(documents, sources)
 # Query the system
 answer = rag.query("What is artificial intelligence?")
 print(answer)
+```
+
+**Using OpenAI embeddings (requires both API keys):**
+
+```python
+from claude_rag import ClaudeRAG
+
+# Initialize the RAG system
+rag = ClaudeRAG()
+# ... rest is the same
 ```
 
 ### Advanced Usage
