@@ -1,14 +1,15 @@
 # Claude RAG System
 
-A complete Retrieval-Augmented Generation (RAG) system using Claude API directly, without external frameworks like LangChain or LlamaIndex.
+A complete Retrieval-Augmented Generation (RAG) system using Claude API with Pinecone vector database integration.
 
 ## Features
 
 - **Document Processing**: Intelligent text chunking with overlaps for better context preservation
-- **Vector Embeddings**: Uses OpenAI's text-embedding-ada-002 for high-quality embeddings
+- **Vector Embeddings**: Support for both local embeddings (sentence-transformers) and OpenAI embeddings
+- **Pinecone Integration**: Production-ready vector database for scalable document storage
 - **Similarity Search**: Cosine similarity-based retrieval of relevant document chunks
 - **Claude Integration**: Direct integration with Anthropic's Claude API for response generation
-- **Modular Design**: Clean, extensible architecture for easy customization
+- **Flexible Architecture**: Support for multiple embedding models and vector stores
 
 ## Quick Start
 
@@ -36,90 +37,100 @@ Copy the example environment file and add your API key:
 cp env_example.txt .env
 ```
 
-Edit `.env` with your Anthropic API key:
+Edit `.env` with your API keys:
 
 ```
 ANTHROPIC_API_KEY=your_anthropic_api_key_here
+PINECONE_API_KEY=your_pinecone_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here  # Optional, for OpenAI embeddings
 ```
 
-**Getting API Key:**
+**Getting API Keys:**
 - **Anthropic API Key**: Sign up at [console.anthropic.com](https://console.anthropic.com)
+- **Pinecone API Key**: Sign up at [pinecone.io](https://pinecone.io)
+- **OpenAI API Key**: Sign up at [platform.openai.com](https://platform.openai.com) (optional)
 
-**Note:** This version uses local embeddings (sentence-transformers), so you only need the Anthropic API key!
+### 3. Run the Examples
 
-### 3. Run the Example
-
-**Local embeddings version (recommended):**
+**Pinecone RAG (recommended for production):**
 ```bash
-python3 example_local_rag.py
+python example_pinecone.py
 ```
 
-**Or the original version (requires OpenAI API key):**
+**Local RAG (for testing):**
 ```bash
-python3 example_usage.py
+python example_local_rag.py
+```
+
+**Ingest documents into Pinecone:**
+```bash
+python ingest_documents.py
 ```
 
 ## Usage
 
-### Basic Usage
-
-**Using local embeddings (no OpenAI API key needed):**
+### Basic Usage with Pinecone
 
 ```python
-from claude_rag_no_openai import ClaudeRAGLocal
+from claude_rag_pinecone import ClaudeRAGPinecone
 
-# Initialize the RAG system (only needs Anthropic API key)
-rag = ClaudeRAGLocal()
+# Initialize with Pinecone
+rag = ClaudeRAGPinecone(
+    index_name="your-index",
+    namespace="your-namespace",
+    embedding_model="sentence-transformers/all-roberta-large-v1",  # 1024 dims
+    claude_model="claude-3-5-sonnet-20241022"
+)
 
-# Add documents
-documents = [
-    "Your first document content here...",
-    "Your second document content here...",
-    # ... more documents
-]
+# Add documents to Pinecone
+documents = ["Your document content..."]
+rag.add_documents(documents, sources=["doc1"], doc_id_prefixes=["doc_1"])
 
-sources = ["doc1", "doc2"]  # Optional source identifiers
-
-# Add documents to the system
-rag.add_documents(documents, sources)
-
-# Query the system
-answer = rag.query("What is artificial intelligence?")
+# Query existing documents
+answer = rag.query_existing_documents(
+    "Your question?",
+    k=5,  # Number of documents to retrieve
+    system_instructions="You are a helpful assistant."
+)
 print(answer)
 ```
 
-**Using OpenAI embeddings (requires both API keys):**
+### Ingesting Documents
 
 ```python
-from claude_rag import ClaudeRAG
+# Ingest from folder
+from ingest_documents import ingest_text_files
 
-# Initialize the RAG system
-rag = ClaudeRAG()
-# ... rest is the same
+# With chunking
+ingest_text_files("./documents", "your-index", "your-namespace")
+
+# Without chunking
+ingest_text_files("./documents", "your-index", "your-namespace", no_chunking=True)
 ```
 
 ### Advanced Usage
 
 ```python
-# Custom initialization with specific API keys
-rag = ClaudeRAG(
-    anthropic_api_key="your_anthropic_key",
-    openai_api_key="your_openai_key"
+# Custom initialization with OpenAI embeddings
+rag = ClaudeRAGPinecone(
+    index_name="your-index",
+    namespace="your-namespace",
+    embedding_model="text-embedding-ada-002",
+    claude_model="claude-3-5-sonnet-20241022",
+    use_openai_embeddings=True  # Requires 1536-dim index
 )
 
-# Customize chunking parameters
-from claude_rag import DocumentProcessor
-processor = DocumentProcessor(
-    chunk_size=1500,  # tokens per chunk
-    chunk_overlap=300  # overlap between chunks
+# Query with filtering
+answer = rag.query_existing_documents(
+    "Your question",
+    k=10,
+    filter={"source": {"$eq": "specific_document.pdf"}},
+    system_instructions="You are a medical expert."
 )
 
-# Query with custom parameters
-answer = rag.query(
-    "Your question here",
-    max_context_length=6000,  # max tokens in context
-    k=3  # number of chunks to retrieve
-)
+# Search all documents
+total_docs = rag.get_stats().get('total_vectors', 5)
+answer = rag.query_existing_documents("Your question", k=total_docs)
 ```
 
 ## How It Works
@@ -135,9 +146,10 @@ answer = rag.query(
 - Supports batch processing for efficiency
 
 ### 3. Vector Storage
-- Simple in-memory vector store using NumPy
-- Supports cosine similarity search
-- Easily extensible to external vector databases
+- Production-ready Pinecone vector database
+- Supports cosine similarity search with metadata filtering
+- Scalable storage for large document collections
+- Namespace support for document organization
 
 ### 4. Retrieval & Generation
 - Query is embedded using the same embedding model
@@ -174,17 +186,17 @@ answer = rag.query(
 
 ## Key Components
 
-### `ClaudeRAG`
-Main orchestrator class that coordinates all components.
+### `ClaudeRAGPinecone`
+Main orchestrator class that coordinates all components with Pinecone integration.
 
 ### `DocumentProcessor`
 Handles text chunking and preprocessing with configurable parameters.
 
-### `EmbeddingGenerator`
-Manages embedding generation using OpenAI's API with batch processing support.
+### `LocalEmbeddingGenerator` / `OpenAIEmbeddingGenerator`
+Manages embedding generation using either local sentence-transformers or OpenAI API.
 
-### `VectorStore`
-Simple in-memory storage for document embeddings with similarity search.
+### `PineconeVectorStore`
+Production-ready vector storage using Pinecone with metadata filtering and namespaces.
 
 ### `Document`
 Data class representing a document chunk with metadata and embeddings.
@@ -235,9 +247,9 @@ class CustomDocumentProcessor(DocumentProcessor):
 
 ## Limitations
 
-- **In-Memory Storage**: Not suitable for very large document collections
-- **No Persistence**: Embeddings are lost when the program ends
-- **Simple Retrieval**: Uses basic cosine similarity; no advanced ranking
+- **Dimension Matching**: Embedding model dimensions must match Pinecone index dimensions
+- **API Dependencies**: Requires active Pinecone and Anthropic API keys
+- **Simple Retrieval**: Uses basic cosine similarity; no advanced ranking algorithms
 
 ## Future Enhancements
 

@@ -1,0 +1,71 @@
+date,accountCode,accountName,accountType,accountCategory,amount,paymentsOnly
+2025-01-31,51200,Chemotherapy medication (Purchase),DIRECTCOSTS,Expense,202393.5,TRUE
+2025-01-31,,Foreign Currency Gains and Losses,,Expense,57.99,TRUE
+2025-01-31,61050,Charges - Bank & TT,EXPENSE,Expense,181.91,TRUE
+2025-01-31,61051,Charges - NETS,EXPENSE,Expense,93,TRUE
+2025-01-31,61052,Charges - Credit Card,EXPENSE,Expense,4453.81,TRUE
+2025-01-31,61053,Admin Fee - Hospital Charges,EXPENSE,Expense,111.79,TRUE
+2025-01-31,61056,Charges - Invoice Financing,EXPENSE,Expense,297.03,TRUE
+2025-01-31,61200,Charges - Wise,EXPENSE,Expense,69.92,TRUE
+2025-01-31,61300,Subscriptions,EXPENSE,Expense,3438.2,TRUE
+2025-01-31,61400,Insurance Expenses,EXPENSE,Expense,10570.06,TRUE
+2025-01-31,61500,Insurance Expenses (Directors),EXPENSE,Expense,466.88,TRUE
+2025-01-31,61800,Professional Fees & Secretarial Fee,EXPENSE,Expense,1000,TRUE
+2025-01-31,61880,Consultancy Fees,EXPENSE,Expense,21000,TRUE
+2025-01-31,61890,Medical Audit Fee,EXPENSE,Expense,3593,TRUE
+2025-01-31,61900,Doctor Fees,EXPENSE,Expense,90009.76,TRUE
+2025-01-31,61950,Director Medical Fee,EXPENSE,Expense,1923.13,TRUE
+2025-01-31,62000,Maintenance,EXPENSE,Expense,4929.2,TRUE
+2025-01-31,62100,Clinic Expenses - Medical Supplies,EXPENSE,Expense,105.2,TRUE
+2025-01-31,62305,Patient Welfare,EXPENSE,Expense,56.88,TRUE
+2025-01-31,62310,Staff Welfare,EXPENSE,Expense,1043.45,TRUE
+2025-01-31,62320,Salary - Doctors,EXPENSE,Expense,20000,TRUE
+2025-01-31,62330,Salary - Singapore Staff,EXPENSE,Expense,53091.78,TRUE
+2025-01-31,62331,Salary - Supporting Staff Allowance,EXPENSE,Expense,1300,TRUE
+2025-01-31,62334,Salary - Overseas Staff,EXPENSE,Expense,4383.41,TRUE
+2025-01-31,62340,Manpower - SDF & FWL,EXPENSE,Expense,132,TRUE
+2025-01-31,62350,Manpower - CPF Employer,EXPENSE,Expense,20137,TRUE
+2025-01-31,62355,Director Fee,EXPENSE,Expense,15000,TRUE
+2025-01-31,62370,Rental Fee - Overseas,EXPENSE,Expense,938.37,TRUE
+2025-01-31,62380,Director Remuneration,EXPENSE,Expense,21500,TRUE
+2025-01-31,62400,Marketing Expenses,EXPENSE,Expense,3681.65,TRUE
+2025-01-31,62410,Marketing Fees/ Referral Fees,EXPENSE,Expense,31105.25,TRUE
+2025-01-31,62420,Manpower - With Holding Tax (IND),EXPENSE,Expense,230.28,TRUE
+2025-01-31,62430,Marketing Advertising,EXPENSE,Expense,31475,TRUE
+2025-01-31,62440,Manpower - BPJS - TK & KS (IND),EXPENSE,Expense,207.58,TRUE
+2025-01-31,62700,Rental Fee,EXPENSE,Expense,34275,TRUE
+2025-01-31,62800,Telephone & Internet,EXPENSE,Expense,1026.99,TRUE
+2025-01-31,62850,Cleaning Expenses,EXPENSE,Expense,30,TRUE
+2025-01-31,62860,Laundry Expenses,EXPENSE,Expense,405,TRUE
+2025-01-31,62870,Office Supplies,EXPENSE,Expense,14,TRUE
+2025-01-31,62900,Transportation,EXPENSE,Expense,605.94,TRUE
+2025-01-31,62910,Traveling Overseas,EXPENSE,Expense,7508.59,TRUE
+2025-01-31,62930,Motor Vehicle Expenses,EXPENSE,Expense,6036.41,TRUE
+2025-01-31,63020,Electricity,EXPENSE,Expense,176.78,TRUE
+2025-01-31,63030,Medical Waste Removal,EXPENSE,Expense,440,TRUE
+2025-01-31,63040,Water Services (SP Group),EXPENSE,Expense,4.69,TRUE
+2025-01-31,64000,Entertainments,EXPENSE,Expense,662.74,TRUE
+2025-01-31,65100,Stationery,EXPENSE,Expense,317.53,TRUE
+2025-01-31,65200,Staff Refreshments,EXPENSE,Expense,5.5,TRUE
+2025-01-31,65350,Photocopy Charges & Printing,EXPENSE,Expense,7.66,TRUE
+2025-01-31,65400,Fixed Asset Expenses to PL,EXPENSE,Expense,909.01,TRUE
+2025-01-31,65500,IT Expenses - Hardware & Software,EXPENSE,Expense,7733.2,TRUE
+2025-01-31,65600,Equipment Rental,EXPENSE,Expense,151,TRUE
+2025-01-31,65800,Indonesia Office Expenses,EXPENSE,Expense,2300.14,TRUE
+2025-01-31,65900,Vietnam Office Expenses,EXPENSE,Expense,4279.99,TRUE
+2025-01-31,69100,Realised Exchange Loss/(Gain),EXPENSE,Expense,81.92,TRUE
+2025-01-31,91000,Loan Interest - DBS Bank,EXPENSE,Expense,640.74,TRUE
+2025-01-31,91004,Loan Interest - OCBC Bank,EXPENSE,Expense,2396.48,TRUE
+2025-01-31,91006,Loan Interest - OCBC Bank (USD),EXPENSE,Expense,963.36,TRUE
+2025-01-31,41100,Consultation_Outpatient,REVENUE,Revenue,12363.11,TRUE
+2025-01-31,41200,Medication_Outpatient,REVENUE,Revenue,28916.64,TRUE
+2025-01-31,41300,Laboratory_Outpatient,REVENUE,Revenue,28775.65,TRUE
+2025-01-31,41400,Radiology_Outpatient,REVENUE,Revenue,30390.44,TRUE
+2025-01-31,41510,Chemotherapy Drugs_Outpatient,REVENUE,Revenue,566949.52,TRUE
+2025-01-31,41600,Administration Fee_Outpatient,REVENUE,Revenue,29.8,TRUE
+2025-01-31,41700,Facilities Fee_Outpatient,REVENUE,Revenue,73434.48,TRUE
+2025-01-31,41910,Procedure_Outpatient,REVENUE,Revenue,26116.25,TRUE
+2025-01-31,41920,Others - Outpatient,REVENUE,Revenue,1290,TRUE
+2025-01-31,41940,Consumble Fees -  Outpatient,REVENUE,Revenue,35615.19,TRUE
+2025-01-31,41999,Discount Given_Outpatient,REVENUE,Revenue,0.02,TRUE
+2025-01-31,42100,Consultation_Inpatient,REVENUE,Revenue,5200,TRUE

@@ -1,0 +1,1157 @@
+[
+  {
+    "cancer_treatment": "CA BREAST -- W3 PACLITAXEL",
+    "invoice_items": [
+      {
+        "id": "FAMOTIDINE 40MG",
+        "quantity": 1
+      },
+      {
+        "id": "IV DIPHENIST (BENADRYL)",
+        "quantity": 1
+      },
+      {
+        "id": "FBC (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "DEXA 4MG",
+        "quantity": 4
+      },
+      {
+        "id": "CHEMO PREP AND RECON (PER DRUG)",
+        "quantity": 1
+      },
+      {
+        "id": "PACLITAXEL150 (SANDOZ)",
+        "quantity": 1
+      },
+      {
+        "id": "MAXIRON (IRON)",
+        "quantity": 1
+      },
+      {
+        "id": "VACONTIL LOPERAMIDE 2MG",
+        "quantity": 10
+      },
+      {
+        "id": "CHEMO FAC-MED 2-4HR",
+        "quantity": 1
+      },
+      {
+        "id": "ARCOXIA 90MG",
+        "quantity": 10
+      },
+      {
+        "id": "COLD THERAPY - HANDS",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO ADMIN- MED 2-4HR",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO CON- SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "NS-IV CAN",
+        "quantity": 1
+      },
+      {
+        "id": "IV DECAN DEXA 4MG",
+        "quantity": 2
+      },
+      {
+        "id": "AKYNZEO 300MG",
+        "quantity": 1
+      },
+      {
+        "id": "COLD THERAPY - FEET",
+        "quantity": 1
+      },
+      {
+        "id": "FOLLOWUP CONSULT",
+        "quantity": 1
+      },
+      {
+        "id": "PARIET 20MG",
+        "quantity": 14
+      }
+    ]
+  },
+  {
+    "cancer_treatment": "CA LUNG - GEM/CARBO",
+    "invoice_items": [
+      {
+        "id": "NS-INJECTION",
+        "quantity": 2
+      },
+      {
+        "id": "ONCO FEES - SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "PARIET 20MG",
+        "quantity": 28
+      },
+      {
+        "id": "IV DECAN DEXA 4MG",
+        "quantity": 2
+      },
+      {
+        "id": "PET SCAN CONTRAST (RADLINK)",
+        "quantity": 1
+      },
+      {
+        "id": "NS-IV CAN",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO FAC-SHORT 1-2HR",
+        "quantity": 1
+      },
+      {
+        "id": "LONQUEX 6MG",
+        "quantity": 1
+      },
+      {
+        "id": "DOMPERIDONE DORIDONE 10MG",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO PREP AND RECON (PER DRUG)",
+        "quantity": 2
+      },
+      {
+        "id": "XGEVA 120MG",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO ADMIN-SHORT <1-2HR",
+        "quantity": 1
+      },
+      {
+        "id": "GEM1000 (SANDOZ)",
+        "quantity": 1
+      },
+      {
+        "id": "FDG PET-CT (RADLINK)",
+        "quantity": 1
+      },
+      {
+        "id": "ICS3 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "IV DIPHENIST (BENADRYL)",
+        "quantity": 1
+      },
+      {
+        "id": "FAMOTIDINE 40MG",
+        "quantity": 1
+      },
+      {
+        "id": "NORVASC 5MG",
+        "quantity": 30
+      },
+      {
+        "id": "CARBO150 (KEMOCARB)",
+        "quantity": 1
+      },
+      {
+        "id": "AKYNZEO 300MG",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO CON-COMPLEX",
+        "quantity": 1
+      },
+      {
+        "id": "FOLLOWUP CONSULT",
+        "quantity": 1
+      },
+      {
+        "id": "DOMPERIDONE DORIDONE 10MG",
+        "quantity": 90
+      }
+    ]
+  },
+  {
+    "cancer_treatment": "CA BREAST - C4 AC",
+    "invoice_items": [
+      {
+        "id": "FOLLOWUP CONSULT",
+        "quantity": 1
+      },
+      {
+        "id": "DEXA 4MG",
+        "quantity": 8
+      },
+      {
+        "id": "CHEMO CON- SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "FAMOTIDINE 40MG",
+        "quantity": 1
+      },
+      {
+        "id": "ICS3 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "MAXIRON (IRON)",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO PREP AND RECON (PER DRUG)",
+        "quantity": 2
+      },
+      {
+        "id": "NS-IV CAN",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO FAC-MED 2-4HR",
+        "quantity": 1
+      },
+      {
+        "id": "AKYNZEO 300MG",
+        "quantity": 1
+      },
+      {
+        "id": "IV DECAN DEXA 4MG",
+        "quantity": 2
+      },
+      {
+        "id": "IV DIPHENIST (BENADRYL)",
+        "quantity": 1
+      },
+      {
+        "id": "CA 15.3 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "ONCO FEES - SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO ADMIN- MED 2-4HR",
+        "quantity": 1
+      },
+      {
+        "id": "LONQUEX 6MG",
+        "quantity": 1
+      },
+      {
+        "id": "DOXORUBICIN 50MG (SANDOZ)",
+        "quantity": 2
+      },
+      {
+        "id": "CYCLO1GM",
+        "quantity": 1
+      },
+      {
+        "id": "PARIET 20MG",
+        "quantity": 28
+      },
+      {
+        "id": "PERI INTENZE",
+        "quantity": 1
+      },
+      {
+        "id": "NS-INJECTION",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "cancer_treatment": "CA BREAST -- C13 PERJETA/HERCEPTIN",
+    "invoice_items": [
+      {
+        "id": "CHEMO CON- SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "PERJETA420 (FOC)",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO FAC-SHORT 1-2HR",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO ADMIN-SHORT <1-2HR",
+        "quantity": 1
+      },
+      {
+        "id": "THYROID PROFILE QTP2 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "HERCEPTIN440",
+        "quantity": 1
+      },
+      {
+        "id": "STILNOX 6.25MG",
+        "quantity": 42
+      },
+      {
+        "id": "ONCO FEES - SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO PREP AND RECON (PER DRUG)",
+        "quantity": 2
+      },
+      {
+        "id": "FOLLOWUP CONSULT",
+        "quantity": 1
+      },
+      {
+        "id": "NS-IV CAN",
+        "quantity": 1
+      },
+      {
+        "id": "ICS3 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "CA 15.3 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "CALTRATE 600 PLUS MINERALS",
+        "quantity": 100
+      },
+      {
+        "id": "HEPTRAL 400MG",
+        "quantity": 30
+      }
+    ]
+  },
+  {
+    "cancer_treatment": "CA BREAST -- KEYTRUDA",
+    "invoice_items": [
+      {
+        "id": "NS-IV CAN",
+        "quantity": 1
+      },
+      {
+        "id": "ICS3 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "FOLLOWUP CONSULT",
+        "quantity": 1
+      },
+      {
+        "id": "XELODA500",
+        "quantity": 84
+      },
+      {
+        "id": "ONCO FEES - SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO FAC-SHORT 1-2HR",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO CON- SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "CRP (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "KEYTRUDA100",
+        "quantity": 2
+      },
+      {
+        "id": "CHEMO ADMIN-SHORT <1-2HR",
+        "quantity": 1
+      },
+      {
+        "id": "CA 15.3 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "THYROID PROFILE QTP2 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO PREP AND RECON (PER DRUG)",
+        "quantity": 1
+      },
+      {
+        "id": "CERAVE MOISTURISING LOTION",
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "cancer_treatment": "CA BREAST - HERCEPTIN/PACLITAXEL",
+    "invoice_items": [
+      {
+        "id": "IV HYDROCORTISONE 100MG",
+        "quantity": 2
+      },
+      {
+        "id": "PERI INTENZE",
+        "quantity": 1
+      },
+      {
+        "id": "PACLITAXEL150 (SANDOZ)",
+        "quantity": 1
+      },
+      {
+        "id": "GAVISCON LIQUID ADVANCE 150ML",
+        "quantity": 1
+      },
+      {
+        "id": "DUPHALAC LACTUS",
+        "quantity": 1
+      },
+      {
+        "id": "IV DIPHENIST (BENADRYL)",
+        "quantity": 1
+      },
+      {
+        "id": "PARIET 20MG",
+        "quantity": 14
+      },
+      {
+        "id": "DEXA 4MG",
+        "quantity": 4
+      },
+      {
+        "id": "HERCEPTIN440",
+        "quantity": 1
+      },
+      {
+        "id": "CRP (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO FAC-MED 2-4HR",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO PREP AND RECON (PER DRUG)",
+        "quantity": 2
+      },
+      {
+        "id": "CHEMO ADMIN- MED 2-4HR",
+        "quantity": 1
+      },
+      {
+        "id": "IV DECAN DEXA 4MG",
+        "quantity": 2
+      },
+      {
+        "id": "FOLLOWUP CONSULT",
+        "quantity": 1
+      },
+      {
+        "id": "ONCO FEES - SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "2D ECHO MEMC",
+        "quantity": 1
+      },
+      {
+        "id": "METOCLOPRAMIDE 10MG",
+        "quantity": 30
+      },
+      {
+        "id": "VACONTIL LOPERAMIDE 2MG",
+        "quantity": 30
+      },
+      {
+        "id": "NS-IV CAN",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO CON- SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "COLD THERAPY - HANDS",
+        "quantity": 1
+      },
+      {
+        "id": "ICS 1 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "COLD THERAPY - FEET",
+        "quantity": 1
+      },
+      {
+        "id": "TELFAST 180MG",
+        "quantity": 10
+      },
+      {
+        "id": "FAMOTIDINE 40MG",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "cancer_treatment": "CA BREAST -- ALIMTA",
+    "invoice_items": [
+      {
+        "id": "IM/SC VIT B12 1000MCG",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO ADMIN-SHORT <1-2HR",
+        "quantity": 1
+      },
+      {
+        "id": "FOLIC ACID (LAC)",
+        "quantity": 30
+      },
+      {
+        "id": "CHEMO CON- SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "ONCO FEES - SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "EPREX 40000",
+        "quantity": 1
+      },
+      {
+        "id": "EPREX 40000",
+        "quantity": 1
+      },
+      {
+        "id": "MAXIRON (IRON)",
+        "quantity": 3
+      },
+      {
+        "id": "FOLLOWUP CONSULT",
+        "quantity": 1
+      },
+      {
+        "id": "IV DIPHENIST (BENADRYL)",
+        "quantity": 1
+      },
+      {
+        "id": "NS-INJECTION",
+        "quantity": 1
+      },
+      {
+        "id": "ICS3 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "NS-IV CAN",
+        "quantity": 1
+      },
+      {
+        "id": "IV DECAN DEXA 4MG",
+        "quantity": 2
+      },
+      {
+        "id": "TUSSIDEX FORTE",
+        "quantity": 2
+      },
+      {
+        "id": "CHEMO FAC-SHORT 1-2HR",
+        "quantity": 1
+      },
+      {
+        "id": "ALIMTA500",
+        "quantity": 1
+      },
+      {
+        "id": "AKYNZEO 300MG",
+        "quantity": 1
+      },
+      {
+        "id": "DEXA 4MG",
+        "quantity": 4
+      },
+      {
+        "id": "CHEMO PREP AND RECON (PER DRUG)",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "cancer_treatment": "CA LUNG -- PACLI/CARBO",
+    "invoice_items": [
+      {
+        "id": "FAMOTIDINE 40MG",
+        "quantity": 1
+      },
+      {
+        "id": "IV DIPHENIST (BENADRYL)",
+        "quantity": 1
+      },
+      {
+        "id": "IV DECAN DEXA 4MG",
+        "quantity": 2
+      },
+      {
+        "id": "CARBO450 (KEMOCARB)",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO PLANNING",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO PREP AND RECON (PER DRUG)",
+        "quantity": 2
+      },
+      {
+        "id": "AKYNZEO 300MG",
+        "quantity": 1
+      },
+      {
+        "id": "DEXA 4MG",
+        "quantity": 4
+      },
+      {
+        "id": "FOLLOWUP CONSULT",
+        "quantity": 1
+      },
+      {
+        "id": "PACLITAXEL150 (SANDOZ)",
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "cancer_treatment": "CA BREAST  - DOCE/CARBO",
+    "invoice_items": [
+      {
+        "id": "LONQUEX 6MG",
+        "quantity": 1
+      },
+      {
+        "id": "DEXA 4MG",
+        "quantity": 4
+      },
+      {
+        "id": "CARBO450 (KEMOCARB)",
+        "quantity": 1
+      },
+      {
+        "id": "FOLLOWUP CONSULT",
+        "quantity": 1
+      },
+      {
+        "id": "IV DECAN DEXA 4MG",
+        "quantity": 2
+      },
+      {
+        "id": "IV DIPHENIST (BENADRYL)",
+        "quantity": 1
+      },
+      {
+        "id": "AKYNZEO 300MG",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO FAC-MED 2-4HR",
+        "quantity": 1
+      },
+      {
+        "id": "DOCETAXEL80 (SANDOZ)",
+        "quantity": 2
+      },
+      {
+        "id": "NS-PORT",
+        "quantity": 1
+      },
+      {
+        "id": "IV HYDROCORTISONE 100MG",
+        "quantity": 2
+      },
+      {
+        "id": "CHEMO PREP AND RECON (PER DRUG)",
+        "quantity": 2
+      },
+      {
+        "id": "CARBO150 (KEMOCARB)",
+        "quantity": 1
+      },
+      {
+        "id": "DEXA 4MG",
+        "quantity": 8
+      },
+      {
+        "id": "CHEMO CON- SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "ONCO FEES - SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "NS-INS",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO ADMIN- MED 2-4HR",
+        "quantity": 1
+      },
+      {
+        "id": "FAMOTIDINE 40MG",
+        "quantity": 1
+      },
+      {
+        "id": "IV HEPARIN 1000IU",
+        "quantity": 1
+      },
+      {
+        "id": "CA 15.3 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "ICS3 (QUEST)",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "cancer_treatment": "ENHERTU",
+    "invoice_items": [
+      {
+        "id": "CRP (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "IV HEPARIN 1000IU",
+        "quantity": 2
+      },
+      {
+        "id": "CHEMO CON- SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "AKYNZEO 300MG",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO FAC-SHORT 1-2HR",
+        "quantity": 1
+      },
+      {
+        "id": "NS-PORT",
+        "quantity": 2
+      },
+      {
+        "id": "FOLLOWUP CONSULT",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO PREP AND RECON (PER DRUG)",
+        "quantity": 1
+      },
+      {
+        "id": "ICS3 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "CERAVE MOISTURISING LOTION",
+        "quantity": 1
+      },
+      {
+        "id": "BARACLUDE 0.5MG",
+        "quantity": 30
+      },
+      {
+        "id": "CHEMO ADMIN-SHORT <1-2HR",
+        "quantity": 1
+      },
+      {
+        "id": "NS-INS",
+        "quantity": 2
+      },
+      {
+        "id": "CA 15.3 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "ENHERTU",
+        "quantity": 3
+      },
+      {
+        "id": "IV DIPHENIST (BENADRYL)",
+        "quantity": 1
+      },
+      {
+        "id": "IV DECAN DEXA 4MG",
+        "quantity": 2
+      },
+      {
+        "id": "FAMOTIDINE 40MG",
+        "quantity": 1
+      },
+      {
+        "id": "DIFFLAM MINT LOZ 16'S",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "cancer_treatment": "CA COLON -- C2 XELOX",
+    "invoice_items": [
+      {
+        "id": "FAMOTIDINE 40MG",
+        "quantity": 1
+      },
+      {
+        "id": "XELODA150",
+        "quantity": 28
+      },
+      {
+        "id": "PERI INTENZE",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO ADMIN- MED 2-4HR",
+        "quantity": 1
+      },
+      {
+        "id": "ICS3 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO CON- SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "FOLLOWUP CONSULT",
+        "quantity": 1
+      },
+      {
+        "id": "OXALI50 (SANDOZ)",
+        "quantity": 4
+      },
+      {
+        "id": "DEXA 4MG",
+        "quantity": 4
+      },
+      {
+        "id": "IV DECAN DEXA 4MG",
+        "quantity": 2
+      },
+      {
+        "id": "AKYNZEO 300MG",
+        "quantity": 1
+      },
+      {
+        "id": "NS-IV CAN",
+        "quantity": 1
+      },
+      {
+        "id": "IV DIPHENIST (BENADRYL)",
+        "quantity": 1
+      },
+      {
+        "id": "CA19.9 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "XELODA500",
+        "quantity": 56
+      },
+      {
+        "id": "CHEMO FAC-MED 2-4HR",
+        "quantity": 1
+      },
+      {
+        "id": "ONCO FEES - SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO PREP AND RECON (PER DRUG)",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "cancer_treatment": "CA OVARY - C5 PACLI/CARBO",
+    "invoice_items": [
+      {
+        "id": "CHEMO ADMIN- LONG >4HR",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO FAC-LONG >4HR",
+        "quantity": 1
+      },
+      {
+        "id": "ICS3 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "IV HYDROCORTISONE 100MG",
+        "quantity": 2
+      },
+      {
+        "id": "CRP (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "DEXA 4MG",
+        "quantity": 4
+      },
+      {
+        "id": "AKYNZEO 300MG",
+        "quantity": 1
+      },
+      {
+        "id": "CARBO450 (KEMOCARB)",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO CON- SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "CA125 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "FOLLOWUP CONSULT",
+        "quantity": 1
+      },
+      {
+        "id": "COLD THERAPY - FEET",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO PREP AND RECON (PER DRUG)",
+        "quantity": 2
+      },
+      {
+        "id": "ONCO FEES - SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "NS-IV CAN",
+        "quantity": 1
+      },
+      {
+        "id": "PACLITAXEL150 (SANDOZ)",
+        "quantity": 2
+      },
+      {
+        "id": "CARBO150 (KEMOCARB)",
+        "quantity": 1
+      },
+      {
+        "id": "COLD THERAPY - HANDS",
+        "quantity": 1
+      },
+      {
+        "id": "IV DECAN DEXA 4MG",
+        "quantity": 2
+      },
+      {
+        "id": "IV DIPHENIST (BENADRYL)",
+        "quantity": 1
+      },
+      {
+        "id": "FAMOTIDINE 40MG",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "cancer_treatment": "CA BREAST - OGIVRI",
+    "invoice_items": [
+      {
+        "id": "CHEMO FAC-SHORT 1-2HR",
+        "quantity": 1
+      },
+      {
+        "id": "OGIVRI 440MG",
+        "quantity": 1
+      },
+      {
+        "id": "FOLLOWUP CONSULT",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO ADMIN-SHORT <1-2HR",
+        "quantity": 1
+      },
+      {
+        "id": "NS-IV CAN",
+        "quantity": 1
+      },
+      {
+        "id": "ZYRTEC - R",
+        "quantity": 20
+      },
+      {
+        "id": "CHEMO PREP AND RECON (PER DRUG)",
+        "quantity": 1
+      },
+      {
+        "id": "ONCO FEES - SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "IV DIPHENIST (BENADRYL)",
+        "quantity": 1
+      },
+      {
+        "id": "CA 15.3 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "FAMOTIDINE 40MG",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO CON- SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "ICS3 (QUEST)",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "cancer_treatment": "CA BREAST -- C6 HERCEPTIN",
+    "invoice_items": [
+      {
+        "id": "HERCEPTIN440",
+        "quantity": 1
+      },
+      {
+        "id": "NS-IV CAN",
+        "quantity": 1
+      },
+      {
+        "id": "FOLLOWUP CONSULT",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO ADMIN-SHORT <1-2HR",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO FAC-SHORT 1-2HR",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO PREP AND RECON (PER DRUG)",
+        "quantity": 1
+      },
+      {
+        "id": "ONCO FEES - SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "CA 15.3 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "2D ECHO MEMC",
+        "quantity": 1
+      },
+      {
+        "id": "ICS3 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO CON- SIMPLE",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "cancer_treatment": "CA COLON -- XELOX",
+    "invoice_items": [
+      {
+        "id": "ICS3 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "IV DIPHENIST (BENADRYL)",
+        "quantity": 1
+      },
+      {
+        "id": "XELODA150",
+        "quantity": 56
+      },
+      {
+        "id": "CHEMO CON- SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "FAMOTIDINE 40MG",
+        "quantity": 1
+      },
+      {
+        "id": "CA19.9 (QUEST)",
+        "quantity": 1
+      },
+      {
+        "id": "DEXA 4MG",
+        "quantity": 8
+      },
+      {
+        "id": "NS-IV CAN",
+        "quantity": 1
+      },
+      {
+        "id": "FOLLOWUP CONSULT",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO ADMIN- MED 2-4HR",
+        "quantity": 1
+      },
+      {
+        "id": "XELODA500",
+        "quantity": 56
+      },
+      {
+        "id": "OXALI50 (SANDOZ)",
+        "quantity": 4
+      },
+      {
+        "id": "IV DECAN DEXA 4MG",
+        "quantity": 2
+      },
+      {
+        "id": "CHEMO FAC-MED 2-4HR",
+        "quantity": 1
+      },
+      {
+        "id": "AKYNZEO 300MG",
+        "quantity": 1
+      },
+      {
+        "id": "CHEMO PREP AND RECON (PER DRUG)",
+        "quantity": 1
+      },
+      {
+        "id": "ONCO FEES - SIMPLE",
+        "quantity": 1
+      },
+      {
+        "id": "DUONAZOLE 40MG",
+        "quantity": 14
+      }
+    ]
+  }
+]

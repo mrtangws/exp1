@@ -18,10 +18,16 @@ except ImportError:
     HAS_SENTENCE_TRANSFORMERS = False
 
 try:
-    from pinecone import Pinecone, ServerlessSpec
+    from pinecone import Pinecone
     HAS_PINECONE = True
 except ImportError:
     HAS_PINECONE = False
+
+try:
+    import openai
+    HAS_OPENAI = True
+except ImportError:
+    HAS_OPENAI = False
 
 @dataclass
 class Document:
@@ -112,7 +118,7 @@ class LocalEmbeddingGenerator:
         self.model_name = model_name
         self.embedding_dimension = self.model.get_sentence_embedding_dimension()
         
-        print(f"✅ Embedding model loaded: {model_name}")
+        print(f"Embedding model loaded: {model_name}")
         print(f"   Embedding dimension: {self.embedding_dimension}")
     
     def generate_embedding(self, text: str) -> np.ndarray:
@@ -133,13 +139,55 @@ class LocalEmbeddingGenerator:
             print(f"Error generating batch embeddings: {e}")
             return [self.generate_embedding(text) for text in texts]
 
+class OpenAIEmbeddingGenerator:
+    """Handles text embedding generation using OpenAI API"""
+    
+    def __init__(self, model_name: str = "text-embedding-ada-002", api_key: str = None):
+        if not HAS_OPENAI:
+            raise ImportError("openai is required. Install with: pip install openai")
+        
+        api_key = api_key or os.getenv("OPENAI_API_KEY")
+        if not api_key:
+            raise ValueError("OpenAI API key is required. Set OPENAI_API_KEY in environment.")
+        
+        self.client = openai.OpenAI(api_key=api_key)
+        self.model_name = model_name
+        self.embedding_dimension = 1536 if "ada-002" in model_name else 1536
+        
+        print(f"OpenAI embedding model: {model_name}")
+        print(f"   Embedding dimension: {self.embedding_dimension}")
+    
+    def generate_embedding(self, text: str) -> np.ndarray:
+        """Generate embedding for a single text"""
+        try:
+            response = self.client.embeddings.create(
+                input=text,
+                model=self.model_name
+            )
+            return np.array(response.data[0].embedding)
+        except Exception as e:
+            print(f"Error generating embedding: {e}")
+            return np.zeros(self.embedding_dimension)
+    
+    def generate_embeddings_batch(self, texts: List[str]) -> List[np.ndarray]:
+        """Generate embeddings for multiple texts"""
+        try:
+            response = self.client.embeddings.create(
+                input=texts,
+                model=self.model_name
+            )
+            return [np.array(item.embedding) for item in response.data]
+        except Exception as e:
+            print(f"Error generating batch embeddings: {e}")
+            return [self.generate_embedding(text) for text in texts]
+
 class PineconeVectorStore:
     """Pinecone vector store integration"""
     
     def __init__(self, 
                  api_key: str = None, 
                  index_name: str = "claude-rag",
-                 environment: str = "gcp-starter",
+                 environment: str = "us-east-1-aws",
                  embedding_dimension: int = 384):
         
         if not HAS_PINECONE:
@@ -171,14 +219,11 @@ class PineconeVectorStore:
                     name=self.index_name,
                     dimension=self.embedding_dimension,
                     metric="cosine",
-                    spec=ServerlessSpec(
-                        cloud="aws",
-                        region="us-east-1"  # Change as needed
-                    )
+                    spec={"serverless": {"cloud": "aws", "region": "us-east-1"}}
                 )
-                print(f"✅ Created index: {self.index_name}")
+                print(f"Created index: {self.index_name}")
             else:
-                print(f"✅ Using existing index: {self.index_name}")
+                print(f"Using existing index: {self.index_name}")
             
             # Connect to index
             self.index = self.pc.Index(self.index_name)
@@ -213,7 +258,7 @@ class PineconeVectorStore:
                 batch = vectors[i:i + batch_size]
                 self.index.upsert(vectors=batch, namespace=namespace)
             
-            print(f"✅ Added {len(vectors)} documents to Pinecone")
+            print(f"Added {len(vectors)} documents to Pinecone")
     
     def similarity_search(self, 
                          query_embedding: np.ndarray, 
@@ -234,8 +279,15 @@ class PineconeVectorStore:
             # Convert results to Document objects
             results = []
             for match in response.matches:
+                # Try different field names for content (prioritize 'text' field)
+                content = (match.metadata.get("text") or 
+                          match.metadata.get("content") or 
+                          match.metadata.get("chunk") or 
+                          match.metadata.get("document") or 
+                          str(match.metadata))
+                
                 doc = Document(
-                    content=match.metadata.get("content", ""),
+                    content=content,
                     source=match.metadata.get("source", ""),
                     metadata=match.metadata,
                     doc_id=match.id
@@ -267,9 +319,13 @@ class ClaudeRAGPinecone:
     def __init__(self, 
                  anthropic_api_key: str = None,
                  pinecone_api_key: str = None,
+                 openai_api_key: str = None,
                  index_name: str = "claude-rag",
                  embedding_model: str = "all-MiniLM-L6-v2",
-                 namespace: str = ""):
+                 namespace: str = "",
+                 environment: str = "us-east-1-aws",
+                 claude_model: str = "claude-3-5-sonnet-20241022",
+                 use_openai_embeddings: bool = False):
         
         # Setup Anthropic client
         anthropic_key = anthropic_api_key or os.getenv("ANTHROPIC_API_KEY")
@@ -277,21 +333,27 @@ class ClaudeRAGPinecone:
             raise ValueError("Anthropic API key is required")
         
         self.anthropic_client = anthropic.Anthropic(api_key=anthropic_key)
+        self.claude_model = claude_model
         
         # Setup components
         self.processor = DocumentProcessor()
-        self.embedding_generator = LocalEmbeddingGenerator(embedding_model)
+        
+        if use_openai_embeddings:
+            self.embedding_generator = OpenAIEmbeddingGenerator(embedding_model, openai_api_key)
+        else:
+            self.embedding_generator = LocalEmbeddingGenerator(embedding_model)
         
         # Setup Pinecone
         self.vector_store = PineconeVectorStore(
             api_key=pinecone_api_key,
             index_name=index_name,
+            environment=environment,
             embedding_dimension=self.embedding_generator.embedding_dimension
         )
         
         self.namespace = namespace
         
-        print(f"✅ Claude RAG with Pinecone initialized")
+        print(f"Claude RAG with Pinecone initialized")
         print(f"   Index: {index_name}")
         print(f"   Namespace: {namespace or 'default'}")
     
@@ -327,13 +389,14 @@ class ClaudeRAGPinecone:
         
         # Add to Pinecone
         self.vector_store.add_documents(all_chunks, self.namespace)
-        print(f"✅ Documents added to Pinecone index")
+        print(f"Documents added to Pinecone index")
     
     def query_existing_documents(self, 
                                 question: str, 
                                 max_context_length: int = 4000, 
                                 k: int = 5,
-                                filter: Dict = None) -> str:
+                                filter: Dict = None,
+                                system_instructions: str = None) -> str:
         """Query existing documents in Pinecone (no need to add new documents)"""
         print(f"Querying existing Pinecone documents: {question}")
         
@@ -366,8 +429,20 @@ class ClaudeRAGPinecone:
         
         context = "\n\n---\n\n".join(context_parts)
         
+        # Debug: Print context length
+        print(f"Context built with {len(context)} characters")
+        if len(context) < 100:
+            print(f"Warning: Context is very short: {context[:200]}")
+        
         # Create prompt for Claude
-        prompt = f"""Based on the following context from the document database, please answer the question. If the context doesn't contain enough information to answer the question completely, please say so and provide what information is available.
+        base_instruction = "Based on the following context from the document database, please answer the question. If the context doesn't contain enough information to answer the question completely, please say so and provide what information is available."
+        
+        if system_instructions:
+            instruction = f"{system_instructions}\n\n{base_instruction}"
+        else:
+            instruction = base_instruction
+            
+        prompt = f"""{instruction}
 
 Context:
 {context}
@@ -379,7 +454,7 @@ Answer:"""
         try:
             # Call Claude API
             response = self.anthropic_client.messages.create(
-                model="claude-3-sonnet-20240229",
+                model=self.claude_model,
                 max_tokens=1000,
                 messages=[
                     {"role": "user", "content": prompt}
@@ -416,8 +491,8 @@ def main():
     # Make sure you have ANTHROPIC_API_KEY and PINECONE_API_KEY in your environment
     try:
         rag = ClaudeRAGPinecone(
-            index_name="claude-rag-demo",  # Use your existing index name
-            namespace="demo"  # Optional namespace
+            index_name="cfo-python",  # Use your existing index name
+            namespace="cfo"  # Optional namespace
         )
         
         # Option 1: Query existing documents (if you already have documents in Pinecone)
@@ -427,8 +502,8 @@ def main():
         
         questions = [
             "What documents do you have?",
-            "Tell me about artificial intelligence",
-            "How does machine learning work?"
+            "Tell me about appointments in July",
+            "Which items are low stock?"
         ]
         
         for question in questions:
@@ -442,26 +517,26 @@ def main():
         print("ADDING NEW DOCUMENTS TO PINECONE")
         print("="*60)
         
-        new_documents = [
-            """
-            Computer Vision is a field of artificial intelligence that enables computers 
-            to interpret and understand visual information from the world. It involves 
-            developing algorithms and techniques that can automatically extract, analyze, 
-            and understand useful information from images, videos, and other visual inputs.
-            """
-        ]
+        # new_documents = [
+        #     """
+        #     Computer Vision is a field of artificial intelligence that enables computers 
+        #     to interpret and understand visual information from the world. It involves 
+        #     developing algorithms and techniques that can automatically extract, analyze, 
+        #     and understand useful information from images, videos, and other visual inputs.
+        #     """
+        # ]
         
-        rag.add_documents(new_documents, ["CV_Guide"], ["cv_doc"])
+        # rag.add_documents(new_documents, ["CV_Guide"], ["cv_doc"])
         
         # Query after adding new documents
-        answer = rag.query_existing_documents("What is computer vision?")
-        print(f"\nAfter adding new document:")
-        print(f"Q: What is computer vision?")
-        print(f"A: {answer}")
+        # answer = rag.query_existing_documents("What is computer vision?")
+        # print(f"\nAfter adding new document:")
+        # print(f"Q: What is computer vision?")
+        # print(f"A: {answer}")
         
         # Print stats
         stats = rag.get_stats()
-        print(f"\n📊 RAG System Stats: {stats}")
+        print(f"\nRAG System Stats: {stats}")
         
     except Exception as e:
         print(f"Error: {e}")

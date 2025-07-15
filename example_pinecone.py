@@ -14,23 +14,25 @@ def main():
     
     # Check required API keys
     if not os.getenv("ANTHROPIC_API_KEY"):
-        print("❌ Error: ANTHROPIC_API_KEY not found")
+        print("Error: ANTHROPIC_API_KEY not found")
         print("Please add your Anthropic API key to .env file")
         return
     
     if not os.getenv("PINECONE_API_KEY"):
-        print("❌ Error: PINECONE_API_KEY not found")
+        print("Error: PINECONE_API_KEY not found")
         print("Please add your Pinecone API key to .env file")
         return
     
     # Configuration - Update these for your setup
-    INDEX_NAME = input("Enter your Pinecone index name (or press Enter for 'claude-rag'): ").strip()
+    INDEX_NAME = input("Enter your Pinecone index name (or press Enter for 'cfo-python'): ").strip()
     if not INDEX_NAME:
-        INDEX_NAME = "claude-rag"
+        INDEX_NAME = "cfo-python"
     
     NAMESPACE = input("Enter namespace (optional, press Enter for default): ").strip()
+    if not NAMESPACE:
+        NAMESPACE = "cfo"
     
-    print(f"\n🚀 Connecting to Pinecone...")
+    print(f"\nConnecting to Pinecone...")
     print(f"   Index: {INDEX_NAME}")
     print(f"   Namespace: {NAMESPACE or 'default'}")
     
@@ -39,12 +41,14 @@ def main():
         rag = ClaudeRAGPinecone(
             index_name=INDEX_NAME,
             namespace=NAMESPACE,
-            embedding_model="all-MiniLM-L6-v2"  # Use local embeddings
+            embedding_model="sentence-transformers/all-roberta-large-v1",  # 1024 dimensions to match your index
+            claude_model="claude-3-5-sonnet-20241022",
+            use_openai_embeddings=False  # Use local embeddings for 1024 dimensions
         )
         
         # Get index statistics
         stats = rag.get_stats()
-        print(f"\n📊 Your Pinecone Index Stats:")
+        print(f"\nYour Pinecone Index Stats:")
         for key, value in stats.items():
             print(f"   • {key}: {value}")
         
@@ -54,7 +58,7 @@ def main():
             add_sample = input().strip().lower()
             
             if add_sample == 'y':
-                print("\n📚 Adding sample documents...")
+                print("\nAdding sample documents...")
                 sample_docs = [
                     """
                     Artificial Intelligence (AI) is transforming industries worldwide. From healthcare 
@@ -82,13 +86,13 @@ def main():
                     sources=["AI_Overview", "Python_Guide", "Vector_DB_Guide"],
                     doc_id_prefixes=["ai_doc", "python_doc", "vectordb_doc"]
                 )
-                print("✅ Sample documents added!")
+                print("Sample documents added!")
         
         # Interactive query session
         print("\n" + "="*60)
-        print("🤖 CLAUDE RAG with PINECONE - Ask questions about your documents!")
+        print("CLAUDE RAG with PINECONE - Ask questions about your documents!")
         print("="*60)
-        print("💡 Tips:")
+        print("Tips:")
         print("   • Ask specific questions about your document content")
         print("   • Try asking for summaries or comparisons")
         print("   • Use 'stats' to see index information")
@@ -96,15 +100,15 @@ def main():
         
         while True:
             try:
-                query = input("\n🔍 Your question: ").strip()
+                query = input("\nYour question: ").strip()
                 
                 if query.lower() in ['quit', 'exit', 'q']:
-                    print("👋 Goodbye!")
+                    print("Goodbye!")
                     break
                 
                 if query.lower() == 'stats':
                     stats = rag.get_stats()
-                    print("\n📊 Current Index Stats:")
+                    print("\nCurrent Index Stats:")
                     for key, value in stats.items():
                         print(f"   • {key}: {value}")
                     continue
@@ -112,25 +116,44 @@ def main():
                 if not query:
                     continue
                 
-                print("🔎 Searching Pinecone and generating response...")
+                print("Searching Pinecone and generating response...")
                 
                 # Query with additional options
+                system_instructions = """You are a clinic assistant providing quick information retrieval for clinic staff on patients, treatments, appointments, inventory and payables & receivables.
+
+1. When given a string of cancer code and treatment codes:
+  1a. Return a list of invoice items with quantity, 
+  1b. Use the items to fetch the selling_price, then return the sum total.
+2. When asked about cashflow, revenue and expenses, compare month to month data and analyze.
+
+Note: 
+-  If a query requires you to know the date, use the action group today_date to retrieve today's date.
+- Date format in knowledge base is YYYY-MM-DD
+- A week starts on Monday and ends on Sunday. You can ignore Saturday and Sunday when answering queries, as the clinic is closed. 
+- Low stock means the stock count is less than 10. Please omit items with stock count <= 0.
+- When listing multiple items, always use Unicode Character “•” (U+2022) and add a newline (\r\n) after each item.
+- Revenue == Cash Inflow, Expense == Cash Outflow.
+
+Here are some of the common abbreviation we use:
+- appt: appointment"""
+                
                 answer = rag.query_existing_documents(
                     query, 
-                    k=5,  # Number of similar documents to retrieve
-                    max_context_length=4000  # Max tokens for context
+                    k=10,  # Number of similar documents to retrieve
+                    max_context_length=4000,  # Max tokens for context
+                    system_instructions=system_instructions
                 )
                 
-                print(f"\n🤖 Answer: {answer}")
+                print(f"\nAnswer: {answer}")
                 
             except KeyboardInterrupt:
-                print("\n👋 Goodbye!")
+                print("\nGoodbye!")
                 break
             except Exception as e:
-                print(f"❌ Error: {e}")
+                print(f"Error: {e}")
     
     except Exception as e:
-        print(f"❌ Error connecting to Pinecone: {e}")
+        print(f"Error connecting to Pinecone: {e}")
         print("\nTroubleshooting:")
         print("1. Check your PINECONE_API_KEY in .env")
         print("2. Verify your index name exists in Pinecone")
@@ -169,7 +192,7 @@ def advanced_example():
         print(f"Advanced example error: {e}")
 
 if __name__ == "__main__":
-    print("🎯 Claude RAG + Pinecone Integration")
+    print("Claude RAG + Pinecone Integration")
     print("This example connects to your existing Pinecone documents")
     
     main()
